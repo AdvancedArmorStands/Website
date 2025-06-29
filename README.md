@@ -13,7 +13,7 @@
 ![GitHub issues](https://img.shields.io/github/issues/Parsa3323/AdvancedArmorStands?label=Open%20Issues&logo=GitHub)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Parsa3323/AdvancedArmorStands?color=yellow&logo=github)
 ![GitHub license](https://img.shields.io/github/license/Parsa3323/AdvancedArmorStands?color=purple&logo=github)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Parsa3323/AdvancedArmorStands/contributors.yml?logo=github)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Parsa3323/AdvancedArmorStands/test.yml?logo=github)
 ![Forks](https://img.shields.io/github/forks/Parsa3323/AdvancedArmorStands?style=)
 </div>
 
@@ -23,32 +23,51 @@
 
 <div align="center">
 
+[//]: # ([![S]&#40;https://img.shields.io/badge/Go_to-Spigot-yellow?style=for-the-badge&#41;]&#40;https://www.spigotmc.org/resources/advancedarmorstands.121022/&#41;)
+
+[//]: # ([![S]&#40;https://img.shields.io/badge/Go_to-Wiki-orange?style=for-the-badge&#41;]&#40;https://docs.advancedarmorstands.ir/&#41;)
+
+[//]: # ([![S]&#40;https://img.shields.io/badge/Go_to-PolyMart-green?style=for-the-badge&#41;]&#40;https://www.polymart.org/product/7829/advancedarmorstands&#41;)
+
+
 [![Repo Stats](https://github-readme-stats.vercel.app/api/pin/?username=Parsa3323&repo=AdvancedArmorStands&theme=dark)
 ](https://github.com/Parsa3323/AdvancedArmorStands)
+
+
+
 </div>
 
-![FirstImg](https://biaupload.com/do.php?imgf=org-3b039f0f3c191.png)
+[//]: # (![FirstImg]&#40;https://biaupload.com/do.php?imgf=org-3b039f0f3c191.png&#41;)
 
-![2Img](https://biaupload.com/do.php?imgf=org-02a4d92ff3c92.png)
+[//]: # ()
+[//]: # (![2Img]&#40;https://biaupload.com/do.php?imgf=org-02a4d92ff3c92.png&#41;)
 <div align="center">
 
 # Table of Content
 
 </div>
 
+> [!NOTE]
+> By using this plugin you agree to the [Terms of Service](https://github.com/Parsa3323/AdvancedArmorStands/blob/master/TERMS_OF_SERVICE.md).
+
 - [Requirements](#requirements)
+- [Polymart](https://www.polymart.org/product/7829/advancedarmorstands)
+- [Spigot](https://www.spigotmc.org/resources/advancedarmorstands.121022/)
+- [Website](https://advancedarmorstands.ir/)
 - [FAQ](#f-a-q)
-    - [What java version?](https://github.com/Parsa3323/AdvancedArmorStands/wiki/Java-Version)
-    - [Docs](https://github.com/Parsa3323/AdvancedArmorStands/wiki)
-        - [Api](https://github.com/Parsa3323/AdvancedArmorStands/wiki/Api-usage)
-            - [Introduction](https://github.com/Parsa3323/AdvancedArmorStands/wiki/Api-usage#introduction)
-            - [Events](https://github.com/Parsa3323/AdvancedArmorStands/wiki/Api-usage#events)
-        - [Plugin usage](https://github.com/Parsa3323/AdvancedArmorStands/wiki/Plugin-usage)
-            - [Commands](https://github.com/Parsa3323/AdvancedArmorStands/wiki/Plugin-usage#commands)
-            - [Types](https://github.com/Parsa3323/AdvancedArmorStands/wiki/Plugin-usage#how-to-add-a-type)
+    - [What java version?](http://docs.advancedarmorstands.ir/installation#prerequisites)
+    - [Docs](https://docs.advancedarmorstands.ir/)
+        - [Api](https://docs.advancedarmorstands.ir/api)
+            - [Introduction](https://docs.advancedarmorstands.ir/api#getting-started-with-the-api)
+            - [Events](https://docs.advancedarmorstands.ir/api#events)
+        - [Plugin usage](https://docs.advancedarmorstands.ir/plugin-usage)
+            - [Commands](https://docs.advancedarmorstands.ir/plugin-usage/)
+            - [Types](https://docs.advancedarmorstands.ir/plugin-usage)
 - [Configs](#Configs)
     - [Main config](#Main-Configuration)
     - [Types config](#Types-Configuration)
+    - [Animations config](#Animations-Configuration)
+    - [Actions config](#actions-configuration)
 
 
 <div align="center">
@@ -59,7 +78,7 @@ This document contains the configuration details for AAS.
 
 ## Main Configuration
 
-The `main.yml` configuration file allows you to enable or disable debugging.
+The `main.yml` file is the plugin's main configuration file:
 
 
 </div>
@@ -67,16 +86,20 @@ The `main.yml` configuration file allows you to enable or disable debugging.
 ```yaml
 # Main configuration
 
+config-version: <1.0.0> # <========== Config version (don't touch)
+
 debug: false # <========== Enable & Disable debug
 
 shift-right-click-to-add: true # <========== Enable & Disable shift-right-click to add ArmorStand
+
+auto-load-armor-stands: false # <========== Automatically reload armor stands on server restart
 ```
 
 <div align="center">
 
 ## Types Configuration
 
-The `types.yml` file defines different entity types with their properties.
+The `types.yml` file is the configuration for types:
 
 </div>
 
@@ -112,6 +135,82 @@ default: # <====== Name of the type
 > [!NOTE]  
 > Players can create as many types as they want (e.g., up to 80 types), but they must change the names and </br> each type can be used in the game using the `create` command
 
+<div align="center">
+
+## Animations Configuration
+
+The `animations.yml` file is the configuration for animations:
+
+</div>
+
+```yaml
+animations:
+  wave: # <====== Animation name or type
+    interval: 10 # <====== Interval between each animation frame (in ticks)
+    loop: true # <====== Should the animation loop? (true or false)
+    steps: # <====== List of animation steps
+      - head: # <====== Head pose for this step
+          x: 0   # <====== Head X rotation
+          y: 0   # <====== Head Y rotation
+          z: 0   # <====== Head Z rotation
+        left_arm: # <====== Left arm pose for this step
+          x: -30 # <====== Left arm X rotation
+          y: 0   # <====== Left arm Y rotation
+          z: -10 # <====== Left arm Z rotation
+        right_arm: # <====== Right arm pose for this step
+          x: -30 # <====== Right arm X rotation
+          y: 0   # <====== Right arm Y rotation
+          z: 10  # <====== Right arm Z rotation
+        left_leg: # <====== Left leg pose for this step
+          x: 10  # <====== Left leg X rotation
+          y: 0   # <====== Left leg Y rotation
+          z: 0   # <====== Left leg Z rotation
+        right_leg: # <====== Right leg pose for this step
+          x: -10 # <====== Right leg X rotation
+          y: 0   # <====== Right leg Y rotation
+          z: 0   # <====== Right leg Z rotation
+      - head:
+          x: 0   # <====== Head X rotation
+          y: 0   # <====== Head Y rotation
+          z: 0   # <====== Head Z rotation
+        left_arm:
+          x: -10 # <====== Left arm X rotation
+          y: 0   # <====== Left arm Y rotation
+          z: 30  # <====== Left arm Z rotation
+        right_arm:
+          x: -10 # <====== Right arm X rotation
+          y: 0   # <====== Right arm Y rotation
+          z: -30 # <====== Right arm Z rotation
+        left_leg:
+          x: -10 # <====== Left leg X rotation
+          y: 0   # <====== Left leg Y rotation
+          z: 0   # <====== Left leg Z rotation
+        right_leg:
+          x: 10  # <====== Right leg X rotation
+          y: 0   # <====== Right leg Y rotation
+          z: 0   # <====== Right leg Z rotation
+```
+>[!TIP]
+> Or you can use the [online editor](https://advancedarmorstands.ir/animate)
+
+<div align="center">
+
+## Actions Configuration
+
+The `actions.yml` file is the configuration for actions:
+
+</div>
+
+```yaml
+armorstand:
+  SavedStand101: # <====== Name of the armor stand
+    say-its-working: # <====== Command name (use '-' instead of spaces)
+      type: player # <====== Command executor ('player' or 'server')
+      trigger: all # <====== Interaction that triggers the action
+```
+> [!TIP]  
+> Use the Armor Stand menu to create or delete actions easily.
+
 > [!CAUTION]
 > Don't touch cache yaml files.
 
@@ -119,7 +218,7 @@ default: # <====== Name of the type
 
 
 
-For more details, refer to the official documentation or community guides.
+For more details, refer to the [official documentation](https://docs.advancedarmorstands.ir/) or community guides.
 
 
 
@@ -134,34 +233,14 @@ For more details, refer to the official documentation or community guides.
 
 <div align="center">
 
-## Contributors
+# Contributors
 
-<!-- readme: contributors -start -->
-<table>
-	<tbody>
-		<tr>
-            <td align="center">
-                <a href="https://github.com/Parsa3323">
-                    <img src="https://avatars.githubusercontent.com/u/124880821?v=4" width="100;" alt="Parsa3323"/>
-                    <br />
-                    <sub><b>Parsa3323</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/Whisbers">
-                    <img src="https://avatars.githubusercontent.com/u/192603192?v=4" width="100;" alt="Whisbers"/>
-                    <br />
-                    <sub><b>Whisbers</b></sub>
-                </a>
-            </td>
-		</tr>
-	<tbody>
-</table>
-<!-- readme: contributors -end -->
+<a href="https://github.com/Parsa3323/AdvancedArmorStands/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Parsa3323/AdvancedArmorStands" />
+</a>
 
 </div>
 
-[//]: # (...)
 
 
 
