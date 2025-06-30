@@ -1,0 +1,41 @@
+name: Sync README from AdvancedArmorStands
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  sync-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout current repo
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          fetch-depth: 1
+
+      - name: Checkout AdvancedArmorStands repo
+        uses: actions/checkout@v3
+        with:
+          repository: Parsa3323/AdvancedArmorStands
+          path: aas-temp 
+          ref: master
+          fetch-depth: 1
+
+      - name: Overwrite README.md
+        run: |
+          rm -f README.md
+          cp aas-temp/README.md README.md  
+
+      - name: Commit and push
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add ./profile/README.md
+          git commit -m "Force sync profile/README.md from AdvancedArmorStands" --allow-empty
+          git remote set-url origin https://x-access-token:${PAT_TOKEN}@github.com/${{ github.repository }}
+          git push origin main
