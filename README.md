@@ -79,7 +79,7 @@
 
 # Configs
 
-This document contains the configuration details for AAS.
+This document contains the configuration details for AdvancedArmorStands.
 
 ## Main Configuration
 
@@ -135,10 +135,10 @@ default: # <====== Name of the type
     z: 0
 ```
 > [!IMPORTANT]  
-> Modify `itemInHandMaterial` to any valid Minecraft material.
+> Modify `itemInHandMaterial` to any valid Minecraft material (on your minecraft version).
 
 > [!NOTE]  
-> Players can create as many types as they want (e.g., up to 80 types), but they must change the names and </br> each type can be used in the game using the `create` command
+> Players can create as many types as they want, but they must change the names and </br> each type can be used in the game using the `create` sub-command
 
 <div align="center">
 
@@ -232,7 +232,7 @@ For more details, refer to the [official documentation](https://docs.advancedarm
 # Requirements
 </div>
 
-- [PlaceHolderApi](https://www.spigotmc.org/resources/placeholderapi.6245/)
+- [PlaceHolderApi](https://www.spigotmc.org/resources/placeholderapi.6245/) (Optional)
 
 <div align="center">
 
