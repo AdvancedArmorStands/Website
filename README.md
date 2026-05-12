@@ -7,7 +7,7 @@
 **Super lightweight, smart, ultra-efficient plugin that barely uses any server resources!**
 
 
-`1.8, 1.9, 1.10, 1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19, 1.20, 1.20.6, 1.21`
+`1.8, 1.9, 1.10, 1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19, 1.20, 1.20.6, 1.21, 26.1`
 
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/Parsa3323?label=Sponsor&logo=GitHub)]()
 [![GitHub contributors](https://img.shields.io/github/contributors/Parsa3323/AdvancedArmorStands?label=Contributors&logo=GitHub)
@@ -77,7 +77,7 @@ The `main.yml` file is the plugin's main configuration file:
 ```yaml
 # Main configuration
 
-config-version: 1.0.0 # <========== Config version (don't touch)
+config-version: 1.0.2 # <========== Config version (don't touch)
 
 debug: false # <========== Enable & Disable debug
 
