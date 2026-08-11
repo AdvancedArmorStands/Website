@@ -3,6 +3,7 @@ import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import MetaTags from "../components/MetaTags";
+import { SiteFooter } from "../components/SiteFooter";
 
 interface Contributor {
   login: string;
@@ -198,6 +199,7 @@ export default function ContributorsPage() {
       </div>
 
       {/* Modal */}
+      <SiteFooter />
       {selectedContributor && (
         <Modal 
           isOpen={isModalOpen} 
@@ -229,7 +231,7 @@ export default function ContributorsPage() {
               <Button 
                 onClick={handleConfirm} 
                 color="primary"
-                className="w-full sm:w-auto rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 transition-all duration-300"
+                className="gradient-button w-full sm:w-auto rounded-full transition-all duration-300"
               >
                 Confirm
               </Button>

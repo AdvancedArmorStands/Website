@@ -1,26 +1,41 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Button } from "@heroui/react";
+import { Button, Modal, ModalBody, ModalContent, ModalHeader } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useReleases } from "../hooks/useReleases";
 import { MarkdownPreview } from "../components/MarkdownPreview";
 import MetaTags from "../components/MetaTags";
+import { SiteFooter } from "../components/SiteFooter";
+
+const pageButtonClass = "min-w-11 rounded-full border border-gray-700/50 bg-gray-800/50 text-white transition-all duration-300 hover:bg-gray-700/50 hover:border-gray-600/50 disabled:cursor-not-allowed disabled:opacity-40";
 
 export default function Download() {
   const navigate = useNavigate();
-  const { releases, loading, error } = useReleases();
+  const [page, setPage] = useState(1);
+  const { releases, loading, error, hasNextPage } = useReleases(page);
+
+  const changePage = (nextPage: number) => {
+    setPage(nextPage);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const returnHome = () => {
+    navigate("/");
+    requestAnimationFrame(() => window.scrollTo(0, 0));
+  };
 
   return (
-    <main className="dark min-h-screen bg-[radial-gradient(circle_at_center,#18181b,#030303)] relative overflow-hidden">
+    <main className="dark min-h-screen bg-[#030303] relative overflow-hidden">
       <MetaTags 
         title="Download - AdvancedArmorStands"
         description="Download the latest version of AdvancedArmorStands plugin for Minecraft. Get changelogs and previous releases."
         url="https://advancedarmorstands.ir/#/download"
       />
       
-      {/* Enhanced grid background that covers the entire page */}
-      <div className="fixed inset-0 bg-[linear-gradient(to_right,#222224_1px,transparent_1px),linear-gradient(to_bottom,#222224_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,black_40%,transparent_100%)] opacity-40" />
+      {/* Fixed layers keep the visual center anchored to the viewport while scrolling. */}
+      <div className="fixed inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,#18181b,#030303)]" />
+      <div className="download-grid-background bg-[linear-gradient(to_right,#222224_1px,transparent_1px),linear-gradient(to_bottom,#222224_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,black_40%,transparent_100%)] opacity-40" />
       
       {/* Additional subtle overlay for better visual depth */}
       <div className="fixed inset-0 bg-gradient-to-b from-transparent via-gray-950/20 to-gray-950/40" />
@@ -94,16 +109,25 @@ export default function Download() {
               </div>
             </motion.div>
           ) : (
-            releases.map((release, index) => (
+            <>
+            {releases.map((release, index) => (
               <motion.div
                 key={release.tag_name}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <ReleaseCard release={release} />
+              <ReleaseCard release={release} />
               </motion.div>
-            ))
+            ))}
+            <nav className="flex flex-wrap items-center justify-center gap-3 pt-4" aria-label="Release pages">
+              <Button isIconOnly variant="flat" className={pageButtonClass} isDisabled={page === 1} onClick={() => changePage(page - 1)} aria-label="Previous page"><Icon icon="mdi:chevron-left" className="w-5 h-5" /></Button>
+              {Array.from({ length: page + (hasNextPage ? 1 : 0) }, (_, index) => index + 1).map((pageNumber) => (
+                <Button key={pageNumber} isIconOnly variant="flat" aria-label={`Page ${pageNumber}`} aria-current={pageNumber === page ? "page" : undefined} onClick={() => changePage(pageNumber)} className={`${pageButtonClass} ${pageNumber === page ? "border-orange-500/70 bg-orange-500/20 text-orange-400" : ""}`}>{pageNumber}</Button>
+              ))}
+              <Button isIconOnly variant="flat" className={pageButtonClass} isDisabled={!hasNextPage} onClick={() => changePage(page + 1)} aria-label="Next page"><Icon icon="mdi:chevron-right" className="w-5 h-5" /></Button>
+            </nav>
+            </>
           )}
         </div>
 
@@ -118,7 +142,7 @@ export default function Download() {
             variant="bordered"
             size="lg"
             className="w-full sm:w-auto px-8 py-4 rounded-full border-2 border-gray-600 hover:border-white text-white hover:bg-white/5 transition-all duration-300"
-            onClick={() => navigate("/")}
+            onClick={returnHome}
             startContent={<Icon icon="mdi:arrow-left" className="w-5 h-5" />}
           >
             Back to Home
@@ -126,54 +150,14 @@ export default function Download() {
         </motion.div>
       </div>
       
-      {/* Footer */}
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-        className="relative z-10 px-4 sm:px-6 lg:px-12 pb-12 sm:pb-24"
-      >
-        <div className="max-w-6xl mx-auto rounded-3xl border border-gray-800/50 bg-gradient-to-b from-[#151518] to-[#121215] backdrop-blur-xl p-8 sm:p-12 text-center space-y-6 sm:space-y-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white">
-            <span className="bg-gradient-to-br from-orange-500 via-primary-500 to-red-500 bg-clip-text text-transparent">
-              Thanks for Visiting!
-            </span>
-          </h2>
-          <p className="text-base sm:text-lg text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
-            Open-source. Actively supported. Built for creators like you.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
-            <Button
-              variant="flat"
-              size="lg"
-              as="a"
-              href="https://github.com/Parsa3323"
-              target="_blank"
-              startContent={<Icon icon="mdi:github" className="w-5 h-5" />}
-              className="w-full sm:w-auto px-6 py-3 rounded-full bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300"
-            >
-              GitHub
-            </Button>
-            <Button
-              variant="flat"
-              size="lg"
-              as="a"
-              href="https://docs.advancedarmorstands.ir"
-              target="_blank"
-              startContent={<Icon icon="mdi:book-open-variant" className="w-5 h-5" />}
-              className="w-full sm:w-auto px-6 py-3 rounded-full bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300"
-            >
-              Documentation
-            </Button>
-          </div>
-        </div>
-      </motion.div>
+      <SiteFooter />
     </main>
   );
 }
 
 function ReleaseCard({ release }: { release: any }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -230,16 +214,64 @@ function ReleaseCard({ release }: { release: any }) {
             color="primary"
             size="lg"
             startContent={<Icon icon="mdi:download" className="w-5 h-5" />}
-            className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-orange-500/25 relative z-20"
+            className="gradient-button w-full sm:w-auto px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-orange-500/25 relative z-20"
           >
             Download
           </Button>
         </div>
 
-        <div className="prose max-w-none prose-invert text-gray-400 text-sm sm:text-base [&>h1]:text-white [&>h2]:text-white [&>h3]:text-white [&>h4]:text-white [&>h5]:text-white [&>h6]:text-white [&>h1]:font-light [&>h2]:font-light [&>h3]:font-light [&>strong]:text-orange-500 [&>code]:bg-gray-800/50 [&>code]:text-orange-400 [&>code]:px-2 [&>code]:py-1 [&>code]:rounded-md">
-          <MarkdownPreview content={release.body} />
+        <div className="space-y-4">
+          <p className="line-clamp-3 text-sm sm:text-base text-gray-400 font-light leading-relaxed">
+            {getReleaseExcerpt(release.body)}
+          </p>
+          <Button
+            variant="light"
+            size="sm"
+            onClick={() => setIsDetailsOpen(true)}
+            endContent={<Icon icon="mdi:arrow-right" className="w-4 h-4" />}
+            className="px-0 text-orange-500 hover:text-orange-400 transition-colors duration-300"
+          >
+            View full changelog
+          </Button>
         </div>
       </div>
+
+      <Modal
+        isOpen={isDetailsOpen}
+        onClose={() => setIsDetailsOpen(false)}
+        scrollBehavior="inside"
+        classNames={{
+          backdrop: "bg-black/75 backdrop-blur-md",
+          base: "max-w-4xl max-h-[85vh] border border-gray-800/50 bg-gradient-to-b from-[#151518] to-[#121215] mx-4",
+          header: "border-b border-gray-800/50",
+          body: "py-6",
+          closeButton: "hover:bg-white/10",
+        }}
+      >
+        <ModalContent>
+          <ModalHeader className="block pr-12">
+            <h2 className="text-xl sm:text-2xl font-light text-white">{release.name}</h2>
+            <p className="mt-1 text-sm font-light text-gray-400">
+              {new Date(release.published_at).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+            </p>
+          </ModalHeader>
+          <ModalBody>
+            <MarkdownPreview content={release.body} />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </div>
   );
+}
+
+function getReleaseExcerpt(markdown: string) {
+  return markdown
+    .replace(/\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|DANGER)\]/gi, "")
+    .replace(/^>\s?/gm, "")
+    .replace(/!\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/<[^>]*>/g, "")
+    .replace(/[`*_~#|]/g, "")
+    .replace(/\s+/g, " ")
+    .trim() || "No release notes were provided for this version.";
 }

@@ -53,3 +53,44 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
+
+/* Cross-fade gradient buttons instead of abruptly swapping background images. */
+.gradient-button {
+  position: relative;
+  background-image: linear-gradient(to right, #f97316 0%, #ea580c 50%, #c2410c 100%) !important;
+  background-size: 200% 100%;
+  background-position: left center;
+  transition: background-position 300ms ease, transform 300ms ease, box-shadow 300ms ease !important;
+}
+
+.gradient-button:hover { background-position: right center; }
+
+.release-markdown { line-height: 1.65; }
+.release-markdown > * + * { margin-top: 1rem; }
+.release-markdown h1, .release-markdown h2, .release-markdown h3, .release-markdown h4, .release-markdown h5, .release-markdown h6 { color: #fff; font-weight: 300; line-height: 1.25; }
+.release-markdown h1 { font-size: 1.5rem; }.release-markdown h2 { font-size: 1.25rem; }.release-markdown h3 { font-size: 1.125rem; }
+.release-markdown a { color: #ff5f15; text-decoration: underline; text-underline-offset: 3px; }
+.release-markdown ul, .release-markdown ol { padding-left: 1.5rem; }.release-markdown ul { list-style: disc; }.release-markdown ol { list-style: decimal; }
+.release-markdown li + li { margin-top: .35rem; }
+.release-markdown blockquote { border-left: 3px solid #ff5f15; padding-left: 1rem; color: #a1a1aa; }
+.release-markdown code { border-radius: .375rem; background: rgba(39, 39, 42, .75); color: #fb923c; padding: .125rem .375rem; font-size: .875em; }
+.release-markdown pre { overflow-x: auto; border-radius: .5rem; background: #1e1e22; padding: 1rem; }.release-markdown pre code { background: transparent; padding: 0; color: #e4e4e7; }
+.release-markdown hr { border-color: rgba(63, 63, 70, .8); }
+.release-markdown img { max-width: 100%; border-radius: .5rem; }
+.release-markdown table { display: block; width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; border: 1px solid rgba(82, 82, 91, .7); border-radius: .5rem; }
+.release-markdown th, .release-markdown td { min-width: 8rem; border: 1px solid rgba(82, 82, 91, .7); padding: .75rem 1rem; text-align: left; vertical-align: top; }
+.release-markdown th { background: rgba(39, 39, 42, .8); color: #fff; font-weight: 500; }.release-markdown tr:nth-child(even) { background: rgba(39, 39, 42, .3); }
+.release-markdown .markdown-alert { border-left: 3px solid; border-radius: .5rem; padding: .875rem 1rem; background: rgba(39, 39, 42, .55); }
+.release-markdown .markdown-alert p { margin: 0; }.release-markdown .markdown-alert strong { display: block; margin-bottom: .25rem; }
+.release-markdown .markdown-alert-note, .release-markdown .markdown-alert-tip, .release-markdown .markdown-alert-important, .release-markdown .markdown-alert-warning, .release-markdown .markdown-alert-caution, .release-markdown .markdown-alert-danger { border-color: #ff5f15; }
+.release-markdown .markdown-alert strong { color: #ff5f15; }
+
+.download-grid-background {
+  position: fixed;
+  inset: 0;
+  background-position: center center;
+  background-attachment: fixed;
+  mask-position: center center;
+  mask-repeat: no-repeat;
+  pointer-events: none;
+}

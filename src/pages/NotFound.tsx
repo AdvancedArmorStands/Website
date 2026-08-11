@@ -50,7 +50,7 @@ export default function NotFound() {
             as={Link}
             to="/"
             startContent={<Icon icon="mdi:home" className="w-5 h-5" />}
-            className="px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-orange-500/25"
+            className="gradient-button px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-orange-500/25"
           >
             Go Home
           </Button>

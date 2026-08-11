@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import MetaTags from "../components/MetaTags";
+import { SiteFooter } from "../components/SiteFooter";
 
 export default function Home() {
   return (
@@ -48,7 +49,7 @@ export default function Home() {
               startContent={<Icon icon="lucide:wand-2" className="w-5 h-5" />}
               as={Link}
               to="/animate"
-              className="w-full sm:w-auto px-8 py-6 text-base font-medium rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-orange-500/25"
+              className="gradient-button w-full sm:w-auto px-8 py-6 text-base font-medium rounded-full transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-orange-500/25"
             >
               Create Animations
             </Button>
@@ -99,58 +100,7 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* Footer */}
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-        className="relative z-10 px-4 sm:px-6 lg:px-12 pb-12 sm:pb-24"
-      >
-        <div className="max-w-7xl mx-auto rounded-3xl border border-gray-800/50 bg-gradient-to-b from-[#151518] to-[#121215] backdrop-blur-xl p-8 sm:p-12 text-center space-y-6 sm:space-y-8">
-          <h2 className="text-2xl sm:text-3xl font-light text-white">
-            <span className="bg-gradient-to-br from-orange-500 via-primary-500 to-red-500 bg-clip-text text-transparent">
-              Built for Creators
-            </span>
-          </h2>
-          <p className="text-base sm:text-lg text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
-            Open-source. Actively supported. Designed with the community in mind.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 pt-4">
-            <Button
-              variant="flat"
-              size="lg"
-              as="a"
-              href="https://github.com/Parsa3323"
-              target="_blank"
-              startContent={<Icon icon="mdi:github" className="w-5 h-5" />}
-              className="w-full sm:w-auto px-6 py-3 rounded-full bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300"
-            >
-              GitHub
-            </Button>
-            <Button
-              variant="flat"
-              size="lg"
-              as="a"
-              href="/#/contributors"
-              startContent={<Icon icon="mdi:account-group" className="w-5 h-5" />}
-              className="w-full sm:w-auto px-6 py-3 rounded-full bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300"
-            >
-              Contributors
-            </Button>
-            <Button
-              variant="flat"
-              size="lg"
-              as="a"
-              href="https://docs.advancedarmorstands.ir"
-              target="_blank"
-              startContent={<Icon icon="mdi:book-open-variant" className="w-5 h-5" />}
-              className="w-full sm:w-auto px-6 py-3 rounded-full bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300"
-            >
-              Documentation
-            </Button>
-          </div>
-        </div>
-      </motion.div>
+      <SiteFooter title="Built for Creators" description="Open-source. Actively supported. Designed with the community in mind." showContributors maxWidth="max-w-7xl" />
     </main>
   );
 }

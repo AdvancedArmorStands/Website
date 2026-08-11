@@ -212,7 +212,7 @@ export default function Animate() {
                 color="primary"
                 startContent={<Icon icon="lucide:download" className="w-4 h-4" />}
                 onClick={exportAnimation}
-                className="px-6 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 font-medium"
+                className="gradient-button px-6 rounded-full font-medium"
               >
                 Export
               </Button>
@@ -362,7 +362,7 @@ export default function Animate() {
                   <Button
                     isIconOnly
                     size="lg"
-                    className="w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 transition-all duration-200 transform hover:scale-105"
+                    className="gradient-button w-12 h-12 rounded-full transition-all duration-200 transform hover:scale-105"
                     onClick={playAnimation}
                   >
                     <Icon icon={isPlaying ? "lucide:pause" : "lucide:play"} className="w-5 h-5" />
