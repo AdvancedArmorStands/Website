@@ -2,35 +2,29 @@
 
 <div align="center">
 
-# Advanced Armor Stands <img src="https://github.com/user-attachments/assets/084a8def-16ee-4516-84b6-3471bf97448d" width="24" style="vertical-align:middle;" />
+[<img src=".github/images/icon.png"  width="2004" style="vertical-align:middle;" >](#)
 
-**Super lightweight, smart, ultra-efficient plugin that barely uses any server resources!**
+`1.8, 1.9, 1.10, 1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19, 1.20, 1.20.6, 1.21` <br> `26.1, 26.2`
+
+---
+
+[//]: # (**Super lightweight, smart, ultra-efficient plugin that barely uses any server resources!**)
 
 
-`1.8, 1.9, 1.10, 1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19, 1.20, 1.20.6, 1.21, 26.1`
-
-English, Italian, Persian, Portuguese, Russian, Spanish, Turkish Bangla, Indonesian, Polish, Romanian, Add your own
-
-[![GitHub Sponsors](https://img.shields.io/github/sponsors/Parsa3323?label=Sponsor&logo=GitHub)]()
-[![GitHub contributors](https://img.shields.io/github/contributors/Parsa3323/AdvancedArmorStands?label=Contributors&logo=GitHub)
-](https://github.com/Parsa3323/AdvancedArmorStands/graphs/contributors)
 [![Downloads](https://img.shields.io/spiget/downloads/121022?label=Downloads&color=blue&logo=spigot)
 ](https://www.spigotmc.org/resources/advancedarmorstands.121022/)
-[![GitHub last commit](https://img.shields.io/github/last-commit/Parsa3323/AdvancedArmorStands?label=Last%20Commit&logo=GitHub)
-]()
-[![GitHub issues](https://img.shields.io/github/issues/Parsa3323/AdvancedArmorStands?label=Open%20Issues&logo=GitHub)
-](https://github.com/Parsa3323/AdvancedArmorStands/issues)![GitHub repo size](https://img.shields.io/github/repo-size/Parsa3323/AdvancedArmorStands?color=yellow&logo=github)
+![GitHub repo size](https://img.shields.io/github/repo-size/Parsa3323/AdvancedArmorStands?color=yellow&logo=github)
 [![GitHub license](https://img.shields.io/github/license/Parsa3323/AdvancedArmorStands?color=purple&logo=github)
 ]()
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Parsa3323/AdvancedArmorStands/test.yml?logo=github)
-[![Forks](https://img.shields.io/github/forks/Parsa3323/AdvancedArmorStands?style=)
-](https://github.com/Parsa3323/AdvancedArmorStands/issues)[![CodeFactor](https://www.codefactor.io/repository/github/parsa3323/advancedarmorstands/badge)](https://www.codefactor.io/repository/github/parsa3323/advancedarmorstands)
+
 
 </div>
 <div align="center">
 
-[![Repo Stats](https://github-readme-stats.vercel.app/api/pin/?username=Parsa3323&repo=AdvancedArmorStands&bg_color=00000000&text_color=797c80&border_color=797c80)
-](https://github.com/Parsa3323/AdvancedArmorStands)
+[<img src=".github/images/badge1.png" width="204" style="vertical-align:middle;">](https://www.codefactor.io/repository/github/parsa3323/advancedarmorstands/badge)
+[<img src=".github/images/badge2.png" width="204" style="vertical-align:middle;">](#table-of-content)
+[<img src=".github/images/badge3.png" width="204" style="vertical-align:middle;">](#supported-languages)
 
 </div>
 
@@ -43,25 +37,32 @@ English, Italian, Persian, Portuguese, Russian, Spanish, Turkish Bangla, Indones
 > [!NOTE]
 > By using this plugin you agree to the [Terms of Service](https://github.com/Parsa3323/AdvancedArmorStands/blob/master/TERMS_OF_SERVICE.md).
 
+
 - [Requirements](#requirements)
 - [Polymart](https://www.polymart.org/product/7829/advancedarmorstands)
 - [Spigot](https://www.spigotmc.org/resources/advancedarmorstands.121022/)
 - [Status](http://status.advancedarmorstands.ir/)
 - [Website](https://advancedarmorstands.ir/)
-- [FAQ](#f-a-q)
-    - [What java version?](http://docs.advancedarmorstands.ir/installation#prerequisites)
-    - [Docs](https://docs.advancedarmorstands.ir/)
-        - [Api](https://docs.advancedarmorstands.ir/api)
-            - [Introduction](https://docs.advancedarmorstands.ir/api-introduction#getting-started-with-the-api)
-            - [Events](https://docs.advancedarmorstands.ir/api-events#events)
-        - [Plugin usage](https://docs.advancedarmorstands.ir/plugin-usage)
-            - [Commands](https://docs.advancedarmorstands.ir/plugin-usage/)
-            - [Types](https://docs.advancedarmorstands.ir/plugin-usage)
-- [Configs](#Configs)
-    - [Main config](#Main-Configuration)
-    - [Types config](#Types-Configuration)
-    - [Animations config](#Animations-Configuration)
-    - [Actions config](#actions-configuration)
+- [Supported Languages](#supported-languages)
+- [FAQ](https://docs.advancedarmorstands.ir/faq)
+    - [General Questions](https://docs.advancedarmorstands.ir/faq#general-questions)
+- [Documentation](https://docs.advancedarmorstands.ir/)
+    - [API](https://docs.advancedarmorstands.ir/api)
+        - [Events](https://docs.advancedarmorstands.ir/api-events)
+        - [Creating an ArmorStand](https://docs.advancedarmorstands.ir/api-creating-an-armorstand)
+        - [Opening Inventories](https://docs.advancedarmorstands.ir/api-open-inventories)
+        - [Adding Animations](https://docs.advancedarmorstands.ir/api-adding-animation)
+    - [Getting Started](https://docs.advancedarmorstands.ir/gettingstarteds)
+        - [Installation Guide](https://docs.advancedarmorstands.ir/installation)
+        - [Creating an ArmorStand](https://docs.advancedarmorstands.ir/creating-as)
+        - [Moving an ArmorStand](https://docs.advancedarmorstands.ir/moving-as)
+        - [Renaming an ArmorStand](https://docs.advancedarmorstands.ir/renaming-as)
+    - [More Documentation](https://docs.advancedarmorstands.ir/)
+- [Configuration](#Configs)
+    - [Main Config](#Main-Configuration)
+    - [Types Config](#Types-Configuration)
+    - [Animations Config](#Animations-Configuration)
+    - [Actions Config](#actions-configuration)
 
 
 <div align="center">
@@ -221,12 +222,16 @@ armorstand:
 
 <div align="center">
 
-
 For more details, refer to the [official documentation](https://docs.advancedarmorstands.ir/) or community guides.
 
 </div>
 
 <div align="center">
+
+# Supported Languages
+
+English, Italian, Persian, Portuguese, Russian, Spanish, Turkish Bangla, Indonesian, Polish, Romanian, Add your own
+
 
 # Requirements
 </div>
