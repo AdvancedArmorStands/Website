@@ -46,8 +46,8 @@ export default function Home() {
               color="primary"
               variant="shadow"
               startContent={<Icon icon="lucide:wand-2" className="w-5 h-5" />}
-              as={Link}
-              to="/animate"
+              as="a"
+              href="https://animate.advancedarmorstands.ir"
               className="px-8 py-6 text-base font-medium rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-orange-500/25"
             >
               Create Animations
